@@ -192,7 +192,7 @@ function Title() {
       <span className="initial">!</span>
       <p className="williamGay">william gay</p>
     </h1>
-    <a href={SourceUrl} target="_blank" rel="noopener noreferrer" className="mobileOnly">{getLang().sourceCode}</a>
+    <a href="https://github.com/BeatSaberCN/ModsBeforeFriday" target="_blank" rel="noopener noreferrer" className="mobileOnly">{getLang().sourceCode}</a>
     <p>{getLang().titleText}</p>
   </>
 }
