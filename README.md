@@ -7,6 +7,10 @@
 
 主分支不会进行[上游](https://github.com/Lauriethefish/ModsBeforeFriday)合并。如有相关需要可以开新分支。
 
+translate-upstream分支与上游本地化pr同基，在此分支上提交的翻译内容可以被安全合并至上游。
+
+可以基于upstream分支派生新的分支。
+
 # This page is the ModsBeforeFriday source code
 # [CLICK HERE FOR THE MODDING APP](https://lauriethefish.github.io/ModsBeforeFriday/)
 
