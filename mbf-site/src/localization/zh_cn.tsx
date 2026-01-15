@@ -30,7 +30,7 @@ export const SimplifiedChinese = {
     </>,
 
     noCompatableDevice:<>
-        <h3>没有兼容的设备？</h3>
+        <h3>找不到任何兼容设备？</h3>
     
         <p>
           若要使用MBF，你必须启用开发者模式，这样才能用USB连接你的Quest设备。
@@ -139,9 +139,9 @@ export const SimplifiedChinese = {
 
     creditsIntro:(SourceUrl:string)=><>
         <p>你好，我是<b>Lauriethefish</b>，ModsBeforeFriday的原作者。</p>
-        <p>MBF是一个<a href={SourceUrl}>开源项目</a>，在开发过程中，有很多人对其进行了改进。</p>
-        <p>请记住一件重要的事情，MBF只是在帮你<em>安装</em>模组。在这些被安装的核心模组的背后，有一群非常天才的人们，
-        如果你不仔细看模组列表，你甚至都不会知道他（她）们的名字！</p>
+        <p>MBF是一个<a href={SourceUrl}>开源项目</a>，且有很多人参与过开发、改进。</p>
+        <p>请记住一件重要的事情，MBF只是在帮你<em>安装</em>模组。在这些被安装的核心模组的背后，是一群天才的开发者，
+        如果不仔细看模组列表，你甚至都不会知道他（她）们的名字！</p>
         <p>此菜单仅关注那些对MBF应用本身做出贡献的人。</p>
     </>,
     mbfContributors:<>MBF贡献者</>,
