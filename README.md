@@ -5,7 +5,7 @@
 基于ModsBeforeFriday进行的本地化适配：
 - 增加本地化功能，随时切换语言。默认设置为中文。
 
-主分支不会进行[上游](https://github.com/Lauriethefish/ModsBeforeFriday)合并。如有相关需要可以开新分支。
+主分支不会进行[上游](https://github.com/Lauriethefish/ModsBeforeFriday)合并。如有相关需要可以开新分支，请[编辑此文件](https://github.com/BeatSaberCN/ModsBeforeFriday/blob/translate-upstream/mbf-site/src/localization/zh_cn.tsx)进行翻译工作。
 
 translate-upstream分支与上游本地化pr同基，在此分支上提交的翻译内容可以被安全合并至上游。
 
