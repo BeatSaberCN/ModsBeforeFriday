@@ -12,7 +12,7 @@ let _setLang: (lang: any) => void
 
 export function initLanguage() {
     const languageInUrl = new URLSearchParams(window.location.search).get("lang");
-    let defaultLang:EngLikeObject = Eng
+    let defaultLang:EngLikeObject = SimplifiedChinese
     
     if(languageInUrl == "zh_cn")
         defaultLang = SimplifiedChinese;
