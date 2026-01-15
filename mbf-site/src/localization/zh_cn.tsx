@@ -146,6 +146,11 @@ export const SimplifiedChinese = {
     </>,
     mbfContributors:<>MBF贡献者</>,
 
+    creditsIntroCN:<>
+        <p>中文版本的MBF部署于<a href="https://beatsabercn.github.io/ModsBeforeFriday/">此处</a>。</p>
+        <p>此页面后文翻译自原英文内容。</p>
+    </>,
+
     contributorIntroFrozenAlex:<>制作了MBF的拖拽系统， 为我在UI设计方便提供了很多启发。如果没有他，这个UI会乱七八糟的！ </>,
     contributorXoToM:<>，是我朋友，制作了这个令人喜爱的动画背景。（虽说你的CPU可能会讨厌这个东西！）</>,
     contributorAltyFox:<>，是BSMG支持团队中的一个人，为可用性方面提供了宝贵的反馈，帮我定位并修复了Bug。</>,
