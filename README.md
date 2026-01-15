@@ -1,5 +1,7 @@
 # ModsBeforeFriday 本地化项目
 
+中文版ModsBeforeFriday请访问[网站](https://beatsabercn.github.io/ModsBeforeFriday/)。
+
 基于ModsBeforeFriday进行的本地化适配：
 - 增加本地化功能，随时切换语言。默认设置为中文。
 
