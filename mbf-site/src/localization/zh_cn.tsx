@@ -9,7 +9,7 @@ export const SimplifiedChinese = {
     toGetStart:
         <>
             <p>若要开始，使用USB-C数据线连接Quest设备，并点击下方按钮。</p>
-            <p>想看看有哪些能用的模组？可以在<a href="https://mods.bsquest.xyz" target="_blank" rel="noopener noreferrer">这里</a>找到完整的清单！</p>
+            <p>想看看有哪些能用的模组？可以在<a href="https://mods.bsquest.xyz" target="_blank" rel="noopener noreferrer">这里</a>找到完整的清单！<br/> 此版本已集成<a href="https://github.com/BeatSaberCN/bsqmods-cn">中文版镜像源分支</a>，欢迎提交翻译或中文限定内容。</p>
         </>
     ,
 

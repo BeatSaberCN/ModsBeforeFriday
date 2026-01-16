@@ -13,7 +13,7 @@ export interface ModRepoMod {
     global?: boolean
 }
 
-const repoUrlTemplate: string = "https://mods.bsquest.xyz/{0}.json"
+const repoUrlTemplate: string = "https://beatsabercn.github.io/bsqmods-cn/{0}.json"
 
 export async function loadRepo(gameVersion: string): Promise<VersionedModRepo> {
     const req = await fetch(repoUrlTemplate.replace("{0}", gameVersion));
