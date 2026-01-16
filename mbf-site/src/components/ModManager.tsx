@@ -112,8 +112,8 @@ function InstalledModsMenu(props: ModMenuProps) {
         {Object.keys(changes).length > 0 && <button className={`syncChanges fadeIn ${props.visible ? "" : "hidden"}`} onClick={async () => {
             if (!device) return;
             setChanges({});
-            Log.debug("Installing mods, statuses requested: " + JSON.stringify(changes));
-            await wrapOperation("Syncing mods", "Failed to sync mods", async () => {
+            Log.debug(getLang().installingModsStr + JSON.stringify(changes));
+            await wrapOperation(getLang().syncingMods, getLang().failedToSyncMods, async () => {
                 const modSyncResult = await setModStatuses(device, changes);
                 setMods(modSyncResult.installed_mods);
 
@@ -136,7 +136,7 @@ function InstalledModsMenu(props: ModMenuProps) {
 				onRemoved={async () => {
                     if (!device) return;
 
-                    await wrapOperation("Removing mod", "Failed to remove mod", async () => {
+                    await wrapOperation(getLang().removingMod, getLang().failedToRemoveMod, async () => {
 						setMods(await removeMod(device, mod.id));
                         const newChanges = { ...changes };
                         
@@ -165,7 +165,7 @@ function InstalledModsMenu(props: ModMenuProps) {
 
 function UploadButton({ onUploaded }: { onUploaded: (files: File[]) => void}) {
     const inputFile = useRef<HTMLInputElement | null>(null);
-    return <button id="uploadButton" onClick={() => inputFile.current?.click()} title="Upload any .QMOD file, any song as a .ZIP, any Qosmetics files or any other file accepted by a particular mod.">
+    return <button id="uploadButton" onClick={() => inputFile.current?.click()} title={getLang().uploadFileHint}>
         {getLang().uploadFiles}
         <img src={UploadIcon}/>
         <input type="file"
@@ -228,8 +228,7 @@ function AddModsMenu(props: ModMenuProps) {
         const versionMismatch = imported_mod.game_version !== null &&gameVersion !== imported_mod.game_version;
         if(versionMismatch) {
             // Don't install a mod by default if its version mismatches: we want the user to understand the consequences
-            toast.error("The mod `" + imported_id + "` was not enabled automatically as it is not designed for game version v" 
-                + trimGameVersion(gameVersion) + ".", { autoClose: false });
+            toast.error(getLang().versionMismatch(imported_id, trimGameVersion(gameVersion)), { autoClose: false });
         }   else    {
             try {
                 const result = await setModStatuses(device, { [imported_id]: true });
@@ -239,12 +238,12 @@ function AddModsMenu(props: ModMenuProps) {
                 if (result.failures !== null) {
                     toast.error(result.failures, { autoClose: false });
                 }   else    {
-                    toast.success("Successfully downloaded and installed " + imported_mod.name + " v" + imported_mod.version)
+                    toast.success(getLang().importDownloadAndInstallSuccess(imported_mod.name, imported_mod.version))
                 }
 
             }   catch(err) {
                 // If this occurs, it's a panic i.e. bug in the agent
-                toast.error(`Failed to install ${imported_id} after importing due to an internal error: ${err}`, { autoClose: false} );
+                toast.error(getLang().importFailedError(imported_id, err), { autoClose: false} );
             }
         }
     }
@@ -254,12 +253,12 @@ function AddModsMenu(props: ModMenuProps) {
         const filename = importResult.used_filename;
         const typedResult = importResult.result;
         if(typedResult.type === 'ImportedFileCopy') {
-            Log.info("Successfully copied " + filename + " to " + typedResult.copied_to + " due to request from " + typedResult.mod_id);
-            toast.success("Successfully copied " + filename + " to the path specified by " + typedResult.mod_id);
+            Log.info(getLang().copyFileSuccessLog(filename,typedResult.copied_to,typedResult.mod_id));
+            toast.success(getLang().copyFileSuccessToast(filename, typedResult.mod_id));
         }   else if(typedResult.type === 'ImportedSong') {
-            toast.success("Successfully imported song " + filename);
+            toast.success(getLang().copySongSuccess(filename));
         }   else if(typedResult.type === 'NonQuestModDetected')  {
-            toast.error(`${importResult.used_filename} is a PC mod, with the .DLL file extension. You can only install Quest mods with the .QMOD file extension. Get these from the 'Add Mods' tab.`, { autoClose: false })
+            toast.error(getLang().noQuestMod(importResult.used_filename), { autoClose: false })
         }   else    {
             await onModImported(typedResult);
         }
@@ -272,21 +271,21 @@ function AddModsMenu(props: ModMenuProps) {
             const importResult = await importFile(device, file);
             await onImportResult(importResult);
         }   catch(e)   {
-            toast.error("Failed to import file: " + e);
+            toast.error(getLang().failedToImportFile + e);
         }
     }
 
     async function handleUrlImport(url: string) {
         if (!device) return;
         if (url.startsWith("file:///")) {
-            toast.error("Cannot process dropped file from this source, drag from the file picker instead. (Drag from OperaGX file downloads popup does not work)");
+            toast.error(getLang().cantHandleDroppedFile);
             return;
         }
         try {
             const importResult = await importUrl(device, url)
             await onImportResult(importResult);
         }   catch(e)   {
-            toast.error(`Failed to import file: ${e}`);
+            toast.error(`${getLang().failedToImportFile} ${e}`);
         }
     }
 
@@ -301,12 +300,12 @@ function AddModsMenu(props: ModMenuProps) {
         }
         
         // Otherwise, we must stop being lazy and process the queue ourselves.
-        Log.debug("Now processing import queue");
+        Log.debug(getLang().processingImportQueue);
         isProcessingQueue = true;
 
         let disconnected = false;
         device.disconnected.then(() => disconnected = true);
-        const setWorking = useSetWorking("Importing");
+        const setWorking = useSetWorking(getLang().modsImporting);
         const { setStatusText } = useSyncStore.getState(); 
 
         setWorking(true);
@@ -316,17 +315,17 @@ function AddModsMenu(props: ModMenuProps) {
 
             if(newImport.type == "File") {
                 const file = (newImport as QueuedFileImport).file;
-                setStatusText(`Processing file ${file.name}`);
+                setStatusText(getLang().processingFile(file.name));
                 await handleFileImport(file);
             }   else if(newImport.type == "Url") {
                 const url = (newImport as QueuedUrlImport).url;
-                setStatusText(`Processing url ${url}`);
+                setStatusText(getLang().processingUrl(url));
 
                 await handleUrlImport(url);
             }   else if(newImport.type == "ModRepo") {
                 const mod = (newImport as QueuedModRepoImport).mod;
 
-                setStatusText(`Installing ${mod.name} v${mod.version}`);
+                setStatusText(getLang().installingMods(mod.name,mod.version));
 
                 await handleUrlImport(mod.download);
             }

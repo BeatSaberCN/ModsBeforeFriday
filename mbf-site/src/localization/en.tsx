@@ -449,4 +449,59 @@ export const Eng = {
     repatchingBeatSaber: "Repatching Beat Saber",
     failedToRepatch: "Failed to repatch",
     successfullyRepatched: "Successfully repatched",
+
+    agentPreparing:"Preparing agent: used to communicate with your Quest.",
+    latestAgentSHA1:"Latest agent SHA1 ",
+    existingAgentSHA1:"Existing agent SHA1: ",
+    agentUpToDate:"Agent is up to date",
+    agentDownloadingForQuest: "Downloading and overwriting agent on Quest",
+    agentRemoveExist: "Removing existing agent",
+    agentDownloading:"Downloading agent, this might take a minute",
+    agentMakeExecutable:"Making agent executable",
+    agentReady: "Agent is ready",
+    agentWrigingToQUest:"Writing agent to quest!",
+    agentError: (AGENT_UPLOAD_TIMEOUT:number)=>`Did not finish pushing agent after ${AGENT_UPLOAD_TIMEOUT} seconds.\n`
+        + `In practice, pushing the agent takes less than a second, so this is a bug. Please report this issue including information about `
+        + `which web browser you are using.`,
+
+    modRepoLoadingMods: "Loading mods",
+
+    processingImportQueue: "Now processing import queue",
+    modsImporting:"Importing",
+    processingFile:(name:string)=>`Processing file ${name}`,
+    processingUrl:(url:string)=>`Processing url ${url}`,
+    installingMods:(name:string,version:string)=>`Installing ${name} v${version}`,
+
+    installingModsStr:"Installing mods, statuses requested: ",
+    syncingMods:"Syncing mods",
+    failedToSyncMods:"Failed to sync mods",
+
+    removingMod:"Removing mod",
+    failedToRemoveMod:"Failed to remove mod",
+
+    versionMismatch:(imported_id:string, gameVersion:string)=>
+        "The mod `" + imported_id + "` was not enabled automatically as it is not designed for game version v" 
+                    + gameVersion + ".",
+    
+    importDownloadAndInstallSuccess:(name:string, version:string)=>
+        "Successfully downloaded and installed " + name + " v" + version,
+    importFailedError:(imported_id:string, err:any)=>
+        `Failed to install ${imported_id} after importing due to an internal error: ${err}`,
+
+    uploadFileHint:"Upload any .QMOD file, any song as a .ZIP, any Qosmetics files or any other file accepted by a particular mod.",
+
+    copyFileSuccessLog:(filename:string,copied_to:string,mod_id:string)=>
+        "Successfully copied " + filename + " to " + copied_to + " due to request from " + mod_id,
+    copyFileSuccessToast:(filename:string,mod_id:string)=>
+        "Successfully copied " + filename + " to the path specified by " + mod_id,
+    copySongSuccess:(filename:string)=>"Successfully imported song " + filename,
+    noQuestMod:(used_filename:string)=>`${used_filename} is a PC mod, with the .DLL file extension. You can only install Quest mods with the .QMOD file extension. Get these from the 'Add Mods' tab.`,
+
+    failedToImportFile:"Failed to import file: ",
+    cantHandleDroppedFile:"Cannot process dropped file from this source, drag from the file picker instead. (Drag from OperaGX file downloads popup does not work)",
+
+    uploadingTo: "Uploading to ",
+    patchingWithManifest: "Patching with manifest: ",
+    pushSplash:(splashPath:string)=>`Pushing splash to ${splashPath}`,
+    didRemoveDLCWarn:"MBF (temporarily) deleted installed DLC while downgrading your game. To get them back, FIRST restart your headset THEN download the DLC in-game."
 }

@@ -30,7 +30,7 @@ export function ModRepoBrowser(props: ModRepoBrowserProps) {
     
     useEffect(() => {
         (async () => {
-            Log.debug("Loading mods");
+            Log.debug(getLang().modRepoLoadingMods);
 
             try {
                 const gameRepo = await loadRepo(gameVersion);

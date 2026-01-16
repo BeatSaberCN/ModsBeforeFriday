@@ -5,6 +5,7 @@ import { AGENT_SHA1 } from './agent_manifest';
 import { toast } from 'react-toastify';
 import { Log } from './Logging';
 import { gameId, ignorePackageId } from './game_info';
+import { getLang } from "./localization/shared";
 
 const AgentPath: string = "/data/local/tmp/mbf-agent";
 const UploadsPath: string = "/data/local/tmp/mbf/uploads/";
@@ -20,17 +21,17 @@ function readableStreamFromByteArray(array: Uint8Array): ReadableStream<Uint8Arr
 }
 
 export async function prepareAgent(adb: Adb) {
-  Log.info("Preparing agent: used to communicate with your Quest.");
+  Log.info(getLang().agentPreparing);
 
-  Log.debug("Latest agent SHA1 " + AGENT_SHA1);
+  Log.debug(getLang().latestAgentSHA1 + AGENT_SHA1);
 
   const existingSha1 = (await adb.subprocess.noneProtocol.spawnWaitText(`sha1sum ${AgentPath} | cut -f 1 -d " "`))
     .trim()
     .toUpperCase();
-  Log.debug("Existing agent SHA1: " + existingSha1);
+  Log.debug(getLang().existingAgentSHA1 + existingSha1);
   const existingUpToDate = AGENT_SHA1 == existingSha1.trim().toUpperCase();
   if(existingUpToDate) {
-    Log.info("Agent is up to date");
+    Log.info(getLang().agentUpToDate);
   } else  {
     await overwriteAgent(adb);
   }
@@ -69,16 +70,16 @@ export function installLoggers() {
 
 export async function overwriteAgent(adb: Adb) {
   const sync = await adb.sync();
-  console.group("Downloading and overwriting agent on Quest");
+  console.group(getLang().agentDownloadingForQuest);
   try {
-    Log.debug("Removing existing agent");
+    Log.debug(getLang().agentRemoveExist);
     await adb.subprocess.noneProtocol.spawnWait("rm " + AgentPath)
-    Log.debug("Downloading agent, this might take a minute")
+    Log.debug(getLang().agentDownloading)
     await saveAgent(sync);
-    Log.debug("Making agent executable");
+    Log.debug(getLang().agentMakeExecutable);
     await adb.subprocess.noneProtocol.spawnWait("chmod +x " + AgentPath);
 
-    Log.info("Agent is ready");
+    Log.info(getLang().agentReady);
   } finally {
     sync.dispose();
     console.groupEnd();
@@ -97,11 +98,10 @@ async function saveAgent(sync: AdbSync) {
     file
   };
 
-  Log.info("Writing agent to quest!");
+  Log.info(getLang().agentWrigingToQUest);
   const timeoutPromise = new Promise((_, reject) => {
-    setTimeout(() => reject(new Error(`Did not finish pushing agent after ${AGENT_UPLOAD_TIMEOUT} seconds.\n`
-        + `In practice, pushing the agent takes less than a second, so this is a bug. Please report this issue including information about `
-        + `which web browser you are using.`
+    setTimeout(() => reject(new Error(
+      getLang().agentError(AGENT_UPLOAD_TIMEOUT)
     )), AGENT_UPLOAD_TIMEOUT * 1000);
   });
 
@@ -299,7 +299,7 @@ export async function importFile(device: Adb,
   const tempPath = UploadsPath + file.name;
   try {
     
-    Log.debug("Uploading to " + tempPath);
+    Log.debug(getLang().uploadingTo + tempPath);
 
     await sync.write({
       filename: tempPath,
@@ -348,14 +348,14 @@ export async function patchApp(device: Adb,
   allow_no_core_mods: boolean,
   device_pre_v51: boolean,
   splashScreen: File | null): Promise<ModStatus> {
-  Log.debug("Patching with manifest: " + manifestMod);
+  Log.debug(getLang().patchingWithManifest + manifestMod);
 
   let splashPath: string | null = null;
   if(splashScreen !== null) {
     const sync = await device.sync();
     splashPath = UploadsPath + splashScreen.name;
     try {
-      Log.debug(`Pushing splash to ${splashPath}`)
+      Log.debug(getLang().pushSplash(splashPath))
       await sync.write({
         filename: splashPath,
         file: readableStreamFromByteArray(new Uint8Array(await splashScreen.arrayBuffer()))
@@ -377,7 +377,7 @@ export async function patchApp(device: Adb,
   }) as Patched;
 
   if(response.did_remove_dlc) {
-    toast.warning("MBF (temporarily) deleted installed DLC while downgrading your game. To get them back, FIRST restart your headset THEN download the DLC in-game.",
+    toast.warning(getLang().didRemoveDLCWarn,
         { autoClose: false })
   }
 
