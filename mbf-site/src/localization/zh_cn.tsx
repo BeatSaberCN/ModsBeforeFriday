@@ -148,7 +148,7 @@ export const SimplifiedChinese = {
 
     creditsIntroCN:<>
         <p>中文版本的MBF部署于<a href="https://beatsabercn.github.io/ModsBeforeFriday/">此处</a>。</p>
-        <p>此页面后文翻译自原英文内容。</p>
+        <small>（后文译自原英文内容）</small>
     </>,
 
     contributorIntroFrozenAlex:<>制作了MBF的拖拽系统， 为我在UI设计方便提供了很多启发。如果没有他，这个UI会乱七八糟的！ </>,

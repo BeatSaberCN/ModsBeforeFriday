@@ -5,7 +5,7 @@ import { Modal } from "./Modal";
 export function CreditsModal({ isVisible, onClose }: { isVisible: boolean, onClose: () => void }) {
     return <Modal isVisible={isVisible}>
         <h2>{getLang().credits}</h2>
-        {getLang().creditsIntroCN}<br/>
+        {getLang().creditsIntroCN}
         {getLang().creditsIntro(SourceUrl)}
 
         <h3>{getLang().mbfContributors}</h3>
