@@ -147,7 +147,7 @@ export const SimplifiedChinese = {
     mbfContributors:<>MBF贡献者</>,
 
     creditsIntroCN:<>
-        <p>中文版本的MBF部署于<a href="https://beatsabercn.github.io/ModsBeforeFriday/">此处</a>。</p>
+        <p>中文版本的MBF源码可参考<a href="https://github.com/BeatSaberCN/ModsBeforeFriday/">这里</a>。</p>
         <small>（后文译自原英文内容）</small>
     </>,
 
