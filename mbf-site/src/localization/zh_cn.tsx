@@ -155,7 +155,7 @@ export const SimplifiedChinese = {
     contributorXoToM:<>，是我朋友，制作了这个令人喜爱的动画背景。（虽说你的CPU可能会讨厌这个东西！）</>,
     contributorAltyFox:<>，是BSMG支持团队中的一个人，为可用性方面提供了宝贵的反馈，帮我定位并修复了Bug。</>,
 
-    contributorLocalization:<><li><p>最初版本的中文本地化工作由<a href="https://github.com/frto027">Frto027</a>制作。如希望改进，请直接向MBF源码提交贡献。</p></li></>,
+    contributorLocalization:<><li><p>最初版本的中文本地化工作由<a href="https://github.com/frto027">Frto027</a>制作。如希望改进文本，请向<a href="https://github.com/BeatSaberCN/ModsBeforeFriday/blob/translate-upstream/mbf-site/src/localization/zh_cn.tsx">这里</a>提交PR。更多交流请通过<a href="https://github.com/BeatSaberCN/ModsBeforeFriday/issues">issue</a>进行。</p></li></>,
 
     creditsOkBtnText:<>确定</>,
 
