@@ -33,9 +33,9 @@ export const SimplifiedChinese = {
         <h3>找不到任何兼容设备？</h3>
     
         <p>
-          若要使用MBF，你必须启用开发者模式，这样才能用USB连接你的Quest设备。
+          若要使用MBF，你需要启用开发者模式，这样才能用USB连接你的Quest设备。
           <br />参考<a href="https://developer.oculus.com/documentation/native/android/mobile-device-setup/?locale=zh_CN" target="_blank" rel="noopener noreferrer">官方指南</a> -
-          你需要创建一个新的组织，然后启用USB调试。
+          你需要创建一个新的团队，然后启用USB调试。
         </p>
     </>,
     connectToQuest:<>连接到Quest设备</>,
@@ -63,7 +63,7 @@ export const SimplifiedChinese = {
     uninstallAboutMapThings: <>
         <h3>我的谱面/模组/成绩/qosmetics会怎么样？</h3>
         <ul>
-            <li><em>谱面和成绩是安全的</em>，因为它们存放的位置和游戏本体是不一样的，你卸载的时候不会自动删掉它们。</li>
+            <li><em>谱面和成绩是安全的</em>，因为它们存放的位置和游戏本体是不一样的，卸载的时候不会自动删掉它们。</li>
             <li>Qosmetics也不会被删除，但是如果新版本不支持qosmetics的模组，那就无法使用了。如果你哪天想念它们了，还可以随时回退到这个版本。</li>
             <li><em>现在所有已经安装的模组都会被删除。</em> （会自动安装更新后游戏版本上的核心模组）你可以在更新游戏后重新安装自己的模组（如果新版本有这些模组的话）。</li>
         </ul>
