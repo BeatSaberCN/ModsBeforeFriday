@@ -90,7 +90,7 @@ pub fn get_manifest_axml(agent: &ureq::Agent, version: String) -> Result<Vec<u8>
     Ok(buffer)
 }
 
-const MOD_REPO_URL: &str = "https://mods.bsaber.cn/mods.json";
+const MOD_REPO_URL: &str = "https://qmods.bsaber.cn/mods.json";
 
 /// Gets the mods repository used to search for dependency download URLs.
 pub fn get_mod_repo(res_cache: &ResCache) -> Result<ModRepo> {

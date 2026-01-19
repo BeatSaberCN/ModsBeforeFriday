@@ -4,7 +4,7 @@
 
 基于ModsBeforeFriday进行的本地化适配：
 - 增加本地化功能，随时切换语言。默认设置为中文。
-- 使用中文源，为模组增加中文标题与中文描述（ https://mods.bsaber.cn ）。
+- 使用中文源，为模组增加中文标题与中文描述（ https://qmods.bsaber.cn ）。
 
 主分支不会进行[上游](https://github.com/Lauriethefish/ModsBeforeFriday)合并。如有相关需要可以开新分支，请[编辑此文件](https://github.com/BeatSaberCN/ModsBeforeFriday/blob/translate-upstream/mbf-site/src/localization/zh_cn.tsx)进行翻译工作。
 

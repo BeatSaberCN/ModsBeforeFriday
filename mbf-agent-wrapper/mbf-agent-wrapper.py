@@ -134,7 +134,7 @@ class Wrapper():
             args.game_version = 'auto'
             self.auto_game_version(args)
 
-        url = f'https://mods.bsaber.cn/{args.game_version}.json'
+        url = f'https://qmods.bsaber.cn/{args.game_version}.json'
         self.global_mods = json.loads(requests.get(url).text)
 
     def show_global_mods(self, args):
